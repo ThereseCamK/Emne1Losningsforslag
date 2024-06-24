@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #light{
+            background-color: grey;
+            border-radius: 50%;
+            height: 500px;
+            width: 500px;
+        }
+        #btn {
+            border: 2px solid black;
+            height: 5vh;
+            width: 5vw;
+            text-align: center;
+            align-content: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="light"></div>
+
+    <div id="btn" onclick="turnOfandOn(this)">på</div>
+
+    <script>
+        let isOn = false;
+
+        function turnOfandOn(element){
+            console.log(element.innerHTML)
+            if(isOn == false){
+                isOn = true;
+                element.innerHTML = 'av'
+                document.getElementById('light').style.backgroundColor = 'yellow'
+            }
+            else{
+                isOn = false;
+                element.innerHTML = 'på' 
+                 document.getElementById('light').style.backgroundColor = 'grey'
+            }
+
+        }
+
+    </script>
+
+
+
+</body>
+</html>

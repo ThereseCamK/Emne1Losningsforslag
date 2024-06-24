@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .infoTxt{
+            border: solid black 2px;
+            height: 20vh;
+            width: 20vw;
+            box-shadow: 2px 5px 20px black;
+        }
+        .infoTxtdarkMode{
+            border: solid white 2px;
+            height: 20vh;
+            width: 20vw;
+            box-shadow: 2px 5px 20px white;
+        }
+        .profilePicture{
+            height: 20vh;
+            width: 10vw;
+        }
+    </style>
+</head>
+<body id="page">
+    <!-- OPPGAVE
+        Ved å bruke det du har lært av html, css og javascript skal du lage en nettside som inneholder følgende:
+
+        en introduksjonstekst om deg,
+        en liste som viser noen av hobbyene dine,
+        et bilde av deg
+        en knapp du kan trykke på som endrer bakgrunnsfarge på noe på nettsiden -->
+
+        <h1> OM MEG </h1>
+
+        <div id="info" class="infoTxt"> Hei jeg heter ........ bor i ...... ! 
+            Jeg er .... år, har tidligere jobbet/ studert ...... . 
+            fant ut om GET via ...... . 
+
+        </div>
+
+        <h3> Noen av mine hobbyer er: </h3>
+        <ul>
+            <li>Spille data</li>
+            <li>Programere</li>
+            <li>Formel 1</li>
+            <li>Golf</li>
+        </ul>
+       <br>
+       
+        <!-- 
+            begge disse fungerer, ene er lagret på pcen og kan bare brukes lokalt, 
+            den andre er linket til ett bilde som ligger på nett, når dere bruker IO link så fungerer ikke bilde lokalt på pc
+            men må linke til bildet som ligger på github i mappen din
+        -->
+        <img class="profilePicture" src="profilePicture.jpg"><br>
+        <img class="profilePicture" src="https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png"><br>
+
+
+        <button onclick="changeColor()"> Endre Bakgrunnsfarge </button>
+
+        <script>
+            
+            function changeColor(){
+                let bckgColor = 'black';
+                let txtColor = 'white';
+                //endrer bakgrunnsfarge og textfarge. kan bruke å referere til bare body eller til noe med en spesifikk id
+                document.getElementById('page').style.backgroundColor = bckgColor;
+                document.body.style.color = txtColor;
+
+                //fjerner navnet på en klasse og legger til en ny klasse så det får en annen stil. 
+                let infoElement = document.getElementById('info'); //lagrer elementet vi henviser til i en variabel for å bruke den videre (renere kode)
+
+                infoElement.classList.remove('infoTxt');
+                infoElement.classList.add('infoTxtdarkMode')
+            }
+        </script>
+        
+</body>
+</html>

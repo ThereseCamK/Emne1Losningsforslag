@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <!-- Vis frem et tall
+
+- lag to knapper der en kan øke tallet hver gang du trykker på den, mens den andre gjør tallet mindre
+
+Bruk minst en variabel for å løse oppgaven ;)
+-->
+<h1> Teller</h1>
+<button onclick="increaseNumber()"> Øk tallet </button>
+<button onclick="decreaseNumber()"> Minsk tallet </button>
+<div id="outputNumber"> Tallet er: </div>
+
+<script>
+    var number = 0;
+    let html = 'Tallet er: '
+
+    function increaseNumber(){
+        number = number +1; 
+        document.getElementById('outputNumber').innerHTML = html + number;
+    }
+
+    function decreaseNumber(){
+        number -= 1;
+        document.getElementById('outputNumber').innerHTML = html + number;
+    }
+
+
+</script>
+    
+</body>
+</html>

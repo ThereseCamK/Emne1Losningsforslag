@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn{
+            border: 1px solid black;
+            height: 25px; 
+            width: 25px;      
+            float: left;
+            text-align: center;
+            align-content: center;
+            margin:2px;
+            box-shadow: inset 1px 1px 5px black;
+         }
+         #txt{
+            height: 50px;
+         }
+         button{
+           clear: left;
+           float: left;
+         }
+    </style>
+</head>
+<body>
+    <!-- Lag et tekstfelt og et "tastatur" av forskjellige knapper du kan trykke på. 
+    Oppdater tekstfeltet til å vise frem hvilke knapper du har trykt på ved å bruke variabler, this og funksjon med parameter -->
+    <div id="txt" class="txtBox"></div>
+    <div class="btn" onclick="selectChar(this)">A</div>
+    <div class="btn" onclick="selectChar(this)">C</div>
+    <div class="btn" onclick="selectChar(this)">E</div>
+    <div class="btn" onclick="selectChar(this)">G</div>
+    <div class="btn" onclick="selectChar(this)">H</div>
+    <div class="btn" onclick="selectChar(this)">K</div>
+    <div class="btn" onclick="selectChar(this)">I</div>
+    <div class="btn" onclick="selectChar(this)">O</div>
+    <div class="btn" onclick="selectChar(this)"> </div>
+ 
+    <button onclick="deleteTxt()"> Tøm</button>
+  
+   
+
+
+<script>
+        let output = '';
+        let selectedCar = '';
+        
+        function selectChar(element){
+            selectedChar = element.innerHTML;
+            output += selectedChar;
+            document.getElementById('txt').innerHTML = output;
+
+        }  
+        
+        function deleteTxt(){
+            output = '';
+            selectedCar = '';
+            document.getElementById('txt').innerHTML = output
+        }
+</script>
+  
+
+    
+</body>
+</html>

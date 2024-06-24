@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- I denne oppgaven skal du ta lage en funksjon som tar inn en string som parameter. 
+
+    Hvis stringen begynner med en bokstav skal denne gjøres om til uppercase, slik at om du sender inn "terje" blir det gjort om til "Terje". -->
+    <h1>Skriv inn tekst, trykk deretter på knappen for endre forbokstaven til stor hvis det er tekst </h1>
+    <div id="output"></div>
+    <input type="text" onchange="changeInput(this.value)">
+   
+
+    <script>
+        function changeInput(inputValue){
+            let changed = '';
+            let firstLetter = inputValue.charAt(0);
+            // /\d/.test() sjekker om det du sender med inneholder digitaler --> /a/.test() hadde sjekket om input inneholder bokstaven a
+            // let checkIfNumber = /\d/.test(firstLetter); // sjekker første bokstav
+            let checkIfNumber = /\d/.test(inputValue); // sjekker hele teksten
+            console.log(checkIfNumber)
+
+            if(checkIfNumber === false){
+                changed = firstLetter.toUpperCase() + inputValue.slice(1);
+            }
+            else{
+                changed = 'tall funker ikke'
+            }
+
+          
+           document.getElementById('output').innerHTML = changed;
+
+        }
+    </script>
+
+</body>
+</html>

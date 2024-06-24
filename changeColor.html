@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.colorBox{
+            height: 50px;
+            width: 100px;
+            border: solid grey 1px;
+            text-align: center;
+            margin: 5px;
+            padding-top:10px;
+            
+        }
+        .selectedBox{
+            border: solid black 1px; 
+            box-shadow: 2px 2px 20px black; 
+        }
+    </style>
+</head>
+<body>
+    <!-- - Lag 3 eller flere div'er som representerer hver sin farge.
+        Disse skal brukes til å velge hvilken farge man setter på nettleserbakgrunenn eller div'en man velger.
+
+        - Lag en knapp som endrer hele bakgrunnsfargen i nettleseren til den fargen du har valgt.
+
+        - Lag deretter 2 eller flere tomme (men synlige) div'er.
+        Disse er de som skal klikkes på for å velges og da få den bakgrunnsfargen man har valgt fra fargedivene.
+
+        - Gjør det også synlig hvilken av disse div'ene som er valgt - ved f.eks å sette på en ramme.
+
+        Dette er en oppgave hvor du trenger å bruke variabler til å spare på valgene du har tatt, og koble disse sammen.
+
+        Ting som kan være lurt å sjekke ut:
+
+        .classList.remove()
+        .classList.toggle()
+        .classList.add()
+        Man kan skrive: ' divVariabel.style.detManVilStyle = "ny propertyverdi man vil ha" ' for å endre CSS i JavaScript.
+    -->
+
+        <h1>Velg en farge</h1>
+        <div class="colorBox" onclick="selectColor('Rosa','pink')">Rosa</div>
+        <div class="colorBox" onclick="selectColor('Blå', 'blue')">Blå</div>
+        <div class="colorBox" onclick="selectColor('Grønn', 'green')">Grønn</div>
+        <div id="txt"></div>
+        <button onclick="changeBackGroundColor()">Trykk her for å endre bakgrunn</button>
+
+        <div class="colorBox" id="box1" onclick="selectDiv('box1')"></div>
+        <div class="colorBox" id="box2" onclick="selectDiv('box2')"></div>
+
+        <script>
+            let choosenColor = '';
+            let choosenElement = '';
+            
+
+            function selectColor(content, colorName){
+                choosenColor = colorName;
+                document.getElementById('txt').innerHTML = 'valgt farge er: ' + content
+                
+            }
+            function changeBackGroundColor(){
+                document.body.style.backgroundColor = choosenColor;
+            }
+
+            function selectDiv(elementId){
+                let element = document.getElementById(elementId);
+                choosenElement = element;
+                choosenElement.style.backgroundColor = choosenColor;
+                choosenElement.classList.toggle('selectedBox');
+            }
+
+        </script>
+</body>
+</html>
