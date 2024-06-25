@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Bruk det du har lært om å legge inn data i arrays og hvordan å hente data fra arrays og lag en handlevogn!
+Når du trykker på knappen "add to cart", tar du inn input fra brukeren og legger til og oppdaterer listen din i viewet. -->
+    <div id="app"></div>
+    <script>
+        //model
+        let cart = ['Melk', 'Brød', 'Egg'];
+        let newItem = '';
+
+
+        //view
+        show()
+        function show(){
+            let html = ``
+            for(let i = 0; i < cart.length; i++){
+                html += `<div>${cart[i]}</div>`
+            }
+            html += `<input type="text" oninput="newItem = this.value"> <button onclick="addToCart()">legg til</button>`;
+            document.getElementById('app').innerHTML = html;
+        }
+
+        //controller
+        function addToCart(){
+            if(newItem != '' && !cart.includes(newItem) ){
+            
+             cart.push(newItem);
+              newItem = '';
+            }
+            else {
+                alert('kan ikke legge til tom eller noe som er der fra før')
+            }
+            show();
+        }
+
+    </script>
+</body>
+</html>

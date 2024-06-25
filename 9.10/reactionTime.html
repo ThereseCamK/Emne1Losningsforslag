@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.lamps{
+            float: left;
+            margin: 2px;
+            width: 40px; 
+            height: 40px;
+            border: solid 2px black;
+            border-radius: 50%;
+        }
+        .first{
+            clear: left;
+        }
+        .lampOn{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+        <!-- Lag en updateView()-funksjon som lager 25 sirkler ved hjelp av 25 DIV-er med en bakrunnsfarge du velger selv, 
+        og en sirkulær ramme (border-radius: 50%). Sett bredde og høyde til noe passende. Vis dem i 5 rader a 5 sirkler. 
+        Lag en egen css class for dette, kall den for eksempel "lamp". 
+
+        Lag en css class "lightOn" med gul farge. Lag en kontroller-funksjon som endrer en variabel selectedLampIndex i 
+        modellen til et tilfeldig tall under 25 og så kaller updateView(). Endre den slik at riktig lampe lyser opp. 
+        Sørg for å kalle kontroller-funksjonen når siden laster. 
+
+        Legg til en onclick kun på den knappen som lyser - og koble den til en kontroller-funksjonen du lagde i forrige punkt. 
+
+        Forsøk å måle og vise tiden det tok fra en lampe lyste opp til brukeren trykket på den. 
+        Her er noen hint, men finn ut selv hvor i koden du legger dette:
+        var startTime = new Date().getTime();
+        var finishTime = new Date().getTime();
+        var spentMilliseconds = Math.floor(finishTime - startTime);
+        var spentSeconds = spentMilliseconds / 1000; -->
+    <div id="app"></div>
+
+    <script>
+        let numberOflamps = 25;
+        let randomLampIndex = Math.floor(Math.random()*25+1);
+        let startTime = new Date().getTime();
+
+
+        show()
+        function show(){
+            let html = '';
+            for(let i = 0; i < numberOflamps; i++){
+                let first = i % 5 == 0 ? 'first' : ''
+                let ligthOn = '';
+                if(i == randomLampIndex){
+                    ligthOn = 'lampOn';
+                }
+                else ligthOn = ''
+
+                html += `<div class="${first} lamps ${ligthOn}" onclick="klikking(${i})"></div>`
+            }
+            document.getElementById('app').innerHTML = html;
+        }
+
+        function klikking(index){
+          
+            if(index == randomLampIndex){
+            var finishTime = new Date().getTime();
+            var millisec = Math.floor(finishTime - startTime);
+            var seconds = millisec / 1000;
+            console.log('Du har en reaksjonstid på ' + seconds + ' sekunder.') 
+            startTime = new Date().getTime();
+            randomLampIndex = Math.floor(Math.random()*25+1);
+            }
+            else{alert('ikke på')}
+            show();
+        }
+    </script>
+    
+</body>
+</html>

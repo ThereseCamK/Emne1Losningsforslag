@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Du skal lage en enkel funksjon som tar en tekst som parameter og returnerer true eller false ut fra om teksten er en epostadresse eller ikke
+
+    Oppgave
+    
+    I første omgang skal funksjonen si at det er en epostadresse kun hvis teksten inneholder @.
+    I tillegg: teksten skal ikke inneholde mellomrom.
+    I tillegg: teksten skal inneholde et punktum etter @. -->
+    <div id="app"></div>
+    <script>
+        //model
+        let userEmail = '';
+        //VIEW
+        show();
+            function show(){
+                let html = '';
+                html += `<input type="text" onchange="checkEmail(this.value)"> `;
+                document.getElementById('app').innerHTML = html;
+            }
+
+            //controller
+            function checkEmail(input){
+                userEmail = input
+                if(checkAt() && !checkSpace() && checkDot() ){
+                    console.log('gyldig epost');
+
+                }
+                else {
+                    console.log('ikke gyldig epost')
+                }
+            }
+
+
+            //hjelpefunskjoner
+            function checkAt(){
+                if(userEmail.includes('@')){
+                    return true
+                }
+                else return false
+            }
+
+            function checkSpace(){
+                if(userEmail.includes(' ')){
+                    return true
+
+                }
+                else return false
+            }
+
+            function checkDot(){
+                let atIndex =userEmail.indexOf('@')
+                let lastPart = userEmail.slice(atIndex)
+                console.log(lastPart)
+                if(lastPart.includes('.')){
+                    return true
+                }
+                else return false;
+            }
+
+       
+
+
+
+
+    </script>
+    
+    
+</body>
+</html>
