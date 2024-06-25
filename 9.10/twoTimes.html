@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Bruk en for-løkke til å printe ut 2-gangen
+resultatet bør da liste ut tallene:
+2,4,6,8,10,12,14,16,18,20 -->
     <div id="output">
 
     </div>
@@ -14,7 +17,7 @@
         view()
         function view(){
             let html = '';
-            for(let i = 0; i <= 20; i+=2){
+            for(let i = 2; i <= 20; i+=2){
                 html += `<div> ${i}</div>`
             }
             document.getElementById('output').innerHTML = html;
