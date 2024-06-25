@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjektiv del 1 mvc</title>
+    <style>
+        .words{
+            background-color: aqua;
+            height: 70px;
+            width: 100px;
+            border-radius: 30%;
+            align-content: center;
+            text-align: center;
+         
+            margin: 2px;
+            clear: left;
+        }
+        .txtField{
+            float: left;
+            margin: 2px;
+        
+        }
+    </style>
+</head>
+<body>
+    <div  id="txt">
+        <div class ="txtField">Det var en gang en </div> 
+        <div class ="txtField"id="place1">......</div>
+        <div class ="txtField">Hund, som var veldig </div> 
+        <div class ="txtField" id="place2">......</div>
+        <div class ="txtField"> Den var </div> 
+        <div class ="txtField" id="place3">......</div>
+        <div class ="txtField"> og  </div> 
+        <div class ="txtField" id="place4">......</div>
+       
+
+    </div>
+    
+
+    <div class="words" onclick="selectWord(this)">Grønn</div>
+    <div class="words" onclick="selectWord(this)">Rød</div>
+    <div class="words" onclick="selectWord(this)">Sint</div>
+    <div class="words" onclick="selectWord(this)">Glad</div>
+    <div class="words" onclick="selectWord(this)">Høy</div>
+    <div class="words" onclick="selectWord(this)">Lav</div>
+    <div class="words" onclick="selectWord(this)">Prikkete</div>
+    <div class="words" onclick="selectWord(this)">Stripete</div>
+    <div> </div>
+   <script>
+            //model
+            let word1 = '......';
+            let word2 = '......';
+            let word3 = '......';
+            let word4 = '......';
+
+            //view
+            function showAll(){
+                document.getElementById('place1').innerHTML = word1;
+                document.getElementById('place2').innerHTML = word2;
+                document.getElementById('place3').innerHTML = word3;
+                document.getElementById('place4').innerHTML = word4;
+            }
+
+            //controller
+            function selectWord(selectedWord){
+                let chosenWord = selectedWord.innerHTML
+
+                if(word1 == '......' ){
+                    word1 = chosenWord;
+                }
+                else if(word2 === '......' ){
+                    console.log('if to funker')
+                    word2 = chosenWord;
+                }
+                else if(word3 == '......'){
+                    word3 = chosenWord;
+                }
+               else
+                    word4 = chosenWord;
+             
+                showAll()
+               
+
+
+            }
+
+
+
+   </script>
+</body>
+</html>
