@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            background-color: black;
+            color:gray;
+ 
+            height: 30vh;
+            width: 30vw;
+            box-shadow: 2px 5px 20px black;
+        }
+        .output{
+           
+            border: 2px solid black;
+            box-shadow: inset 2px 5px 20px black;
+            background-color: beige;
+            padding: 10px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            background-color: black;
+            color: white;
+        }
+        input{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+                //model
+           let inputTxt = '';
+           let inputTxtReversed = '';
+       
+                //view
+            show();
+           function show(){
+            let app = ``;
+            app = `
+                    <div class="content">
+                        <h1>Reveresere teksten </h1>
+                        valgt tekst: ${inputTxt}
+                        <p>reversert: ${inputTxtReversed}</p> <br>
+                        <input type="text" oninput="inputTxt = this.value"/><br>
+                        <button onclick="reverseInput()">reverser Text</button>
+
+                    </div>
+                `;
+                document.getElementById('app').innerHTML = app;
+           }
+
+                //controller
+           function reverseInput(){
+      
+
+            for(let i = inputTxt.length -1; i >= 0 ; i--){
+            
+                inputTxtReversed += inputTxt[i]
+            }
+            show();
+
+           }
+
+
+
+
+       
+    
+    </script>
+    
+</body>
+</html>

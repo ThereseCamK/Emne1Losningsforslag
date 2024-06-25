@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            background-color: black;
+            color:gray;
+            /* border: 2px solid black; */
+            height: 50vh;
+            width: 30vw;
+            box-shadow: 2px 5px 20px black;
+        }
+        .output{
+           
+            border: 2px solid black;
+            box-shadow: inset 2px 5px 20px black;
+            background-color: beige;
+            padding: 10px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            background-color: black;
+            color: white;
+        }
+        input{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+                //model
+           let a = 0;
+           let e = 0;
+           let ii = 0;
+           let o = 0;
+           let u = 0;
+           let æ = 0;
+           let ø = 0;
+           let å = 0;
+           let notVocal = 0;
+           let inputTxt = '';
+           let totaltLetters = 0;
+
+
+                //view
+            show();
+           function show(){
+            let app = ``;
+            app = `
+                    <div class="content">
+                        <h1> Teller vokaler i tekst</h1>
+                            <div class="output"> 
+                                a = ${a} <br>
+                                e = ${e}<br>
+                                i = ${ii}<br>
+                                o = ${o}<br>
+                                u = ${u}<br>
+                                æ = ${æ}<br>
+                                ø = ${ø}<br>
+                                å = ${å}<br>
+                                antall ikke vokaler: ${notVocal}<br>
+                                Totalt karakterer: ${totaltLetters}<br>
+                                valgt tekst = ${inputTxt}
+                            <input type="text" oninput="inputTxt = this.value"/><br>
+                            <button onclick="checkVocals()">sjekk</button>
+                            </div>              
+                    </div>
+                `;
+                document.getElementById('app').innerHTML = app;
+           }
+
+                //controller
+           function checkVocals(){
+            for(let i = 0; i < inputTxt.length; i++){
+                totaltLetters++;
+                if(inputTxt[i] === 'a'){
+                    a++;
+                }
+               else if (inputTxt[i] === 'e' || inputTxt[i] === 'E'){
+                    e++;
+                }
+                else if(inputTxt[i] === 'i' || inputTxt[i] === 'I'){
+                    ii++;
+                }
+                else if(inputTxt[i] === 'o' || inputTxt[i] === 'O'){
+                    o++;
+                }
+                else if(inputTxt[i] === 'æ'|| inputTxt[i] === 'Æ'){
+                    æ++;
+                }
+                else if(inputTxt[i] === 'ø'|| inputTxt[i] === 'Ø'){
+                    ø++;
+                }
+                else if(inputTxt[i] === 'å'|| inputTxt[i] === 'Å'){
+                    å++;
+                }
+                else notVocal ++;
+            }
+            console.log(notVocal, 'er ikke vokaler')
+            show()
+           }
+
+
+    </script>
+    
+</body>
+</html>
