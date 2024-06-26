@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-Do</title>
+
+    <style>
+           body {
+        background-color: black;
+        color: white;
+        font-weight: bolder;
+    }
+    table, tr, td, th  {
+        border: 1px solid lightcoral;
+        border-collapse: collapse;
+        
+    }
+    td, th {
+        padding: 5px;
+        width: 150px;
+        margin-bottom: 10px;
+    }
+    th {
+        background-color: rosybrown;
+        border: 1px solid rosybrown;
+        color: white;
+    }
+    tr:nth-child(even){
+        background-color: silver;
+        color: rgb(156, 143, 188);
+        
+    }
+    </style>
+
+
+
+</head>
+
+
+<body>
+
+    <table id="taskLists"></table>
+<script>
+        //model
+        let tasks = [
+
+            { descripton: 'Trene på morgenen', isDone: true, person: 'Therese', dateDeadline : 'everyDay', doneDate:'20-02-2020'},
+            { descripton: 'Levere barna', isDone: false, person: 'Rebecka', dateDeadline  : 'everyday', doneDate:''},
+            { descripton: 'Lage Middag', isDone: false, person: 'Alle', dateDeadline  : '07.10.20', doneDate:''},
+            { descripton: 'Vaske opp', isDone: true, person: 'Albert', dateDeadline  : '08.08.2020', doneDate:'29.07.20'},
+
+        ];
+
+        //view
+        let taskTable = document.getElementById("taskLists")
+        show();
+        function show() {
+            let html = `
+             <tr>
+            <th>Gjøremål</th>
+            <th>Gjort eller ikke</th>
+            <th></th>
+            <th>Hvem skal gjøre det</th>
+            <th></th>
+            <th>Frist for å fullføre</th>
+            <th>Fullført </th>
+            </tr>
+            Gjøremål: <input id="taskinput" type="text"> <br>
+            Hvem : <input id="nameinput" type="text"> <br>
+            Fist: <input id="dateinput" type="date">
+            <button onclick="addTask()">Legg til</button>
+            `;
+            for (let i = 0; i < tasks.length; i++) {
+                html += createTaskRow(i);
+            }
+
+            taskTable.innerHTML = html;
+        }
+
+        function createTaskRow(i) {
+
+            const task = tasks[i]
+            const ischecked = task.isDone ? 'checked="checked"' : '';
+            if (!task.editMode && !task.editRespMode)
+
+                return `  <tr>
+                    <td>${task.descripton}</td>
+                <td><input onchange="changeDone(this, ${i})" type="checkbox" ${ischecked} /></td>
+                <td>
+                    <button onclick="deleteTask(${i})">Slett</button>
+                    <button onclick="editTask(${i})">Endre</button>
+                    </td>
+                    <td>${task.person}</td>
+                    <td><button onclick="editResponsible(${i})">Endre Hvem</button>
+                        </td>
+                        <td>${task.dateDeadline}</td>
+                        <td>${task.doneDate}</td>
+            </tr>
+            `;
+            if (task.editMode)
+                return `<tr>
+                <td><input id="editOn${i}" type="text" value="${task.descripton}"/></td>
+                <td><input onchange="changeDone(this, ${i})" type="checkbox" ${ischecked} /></td>
+                <td>
+                    <button onclick="updateTask(${i})">Lagre</button>
+                    </td>
+                    <td>${task.person}</td>
+                    <td><button disabled onclick="editResponsible(${i})">Endre Hvem</button></td>
+                        <td>${task.dateDeadline}</td>
+                        <td>${task.doneDate}</td>
+                    </tr>
+                    `;
+            if (task.editRespMode)
+                return `<tr>
+                <td>${task.descripton}</td>
+                <td><input onchange="changeDone(this, ${i})" type="checkbox" ${ischecked} /></td>
+                <td>
+                        <button disabled onclick="deleteTask(${i})">Slett</button>
+                        <button disabled onclick="editTask(${i})">Lagre</button>
+                    </td>
+                    <td><input id="editResp${i}" type="text" value="${task.person}"/></td>
+                    <td><button onclick="updateResponsible(${i})">Lagre</button></td>
+                        <td>${task.dateDeadline}</td>
+                        <td>${task.doneDate}</td>
+            </tr> `
+
+
+        }
+        function editMode(){
+                    return `<tr>
+                <td>${task.descripton}</td>
+                <td><input onchange="changeDone(this, ${i})" type="checkbox" ${ischecked} /></td>
+                <td>
+                        <button disabled onclick="deleteTask(${i})">Slett</button>
+                        <button disabled onclick="editTask(${i})">Lagre</button>
+                    </td>
+                    <td><input id="editResp${i}" type="text" value="${task.person}"/></td>
+                    <td><button onclick="updateResponsible(${i})">Lagre</button></td>
+                        <td>${task.dateDeadline}</td>
+                        <td>${task.doneDate}</td>
+            </tr> `
+        }
+
+
+
+        //controller
+        let inputTask = document.getElementById("taskinput");
+        let inputResponsible = document.getElementById("nameinput");
+        let inputDate = document.getElementById("dateinput")
+        let d = new Date() ;
+
+
+        console.log(d)
+
+
+        function addTask() {
+            if (inputResponsible.value == '' && inputResponsible.value == '' && inputDate.value == ''
+            ||inputResponsible.value == '' || inputResponsible.value == '' || inputDate.value ==''  )
+            { return alert("Fyll inn") }
+            else {
+                tasks.push(
+                    {   dateDeadline: inputDate.value,
+                        person: inputResponsible.value,
+                        descripton: inputTask.value,
+                        isDone: false
+                    })
+            };
+
+            show();
+            inputTask.value = '';
+            inputResponsible.value = ''
+        }
+        function changeDone(checkbox, index) {
+            tasks[index].isDone = checkbox.checked
+            if(checkbox.checked){
+              tasks[index].doneDate = d.toLocaleDateString();
+
+            }
+            else {
+                tasks[index].doneDate = '';
+            }
+
+            show();
+        }
+        function deleteTask(index) {
+            tasks.splice(index, 1)
+            show();
+        }
+        function editTask(index) {
+            tasks[index].editMode = true;
+
+            show();
+        }
+        function editResponsible(index) {
+            tasks[index].editRespMode = true;
+
+            show();
+
+        }
+        function updateTask(index) {
+            const id = `editOn${index}`;
+            const inputTag = document.getElementById(id);
+
+            tasks[index].descripton = inputTag.value;
+            tasks[index].editMode = false;
+            show();
+        }
+        function updateResponsible(index){
+            const id = `editResp${index}`;
+            const inputTag = document.getElementById(id);
+
+            tasks[index].person = inputTag.value;
+            tasks[index].editRespMode = false;
+            show();
+        }
+    </script>
+</body>
+
+</html>
