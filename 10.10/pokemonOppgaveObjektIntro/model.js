@@ -1,37 +1,3 @@
-// let pikachu = {
-//     name: "Pikachu",
-//     health: 45,
-//     image:"https://github.com/aaltofar/pokemonOppgaveObjektIntro/blob/main/Images/pikachu.png?raw=true",
-//     level: 8,
-//   };
-  
-//   let bulbasaur = {
-//     name: "Bulbasaur",
-//     health: 70,
-//     image: "https://github.com/aaltofar/pokemonOppgaveObjektIntro/blob/main/Images/bulbasaur.png?raw=true",
-//     level: 12,
-//   };
-  
-//   let oranguru = {
-//     name: "Oranguru",
-//     health: 170,
-//     image: "https://github.com/aaltofar/pokemonOppgaveObjektIntro/blob/main/Images/oranguru.png?raw=true",
-//     level: 45,
-//   };
-  
-//   let drowzee = {
-//     name: "Drowzee",
-//     health: 90,
-//     image: "https://github.com/aaltofar/pokemonOppgaveObjektIntro/blob/main/Images/drowzee.png?raw=true",
-//     level: 33,
-//   };
-  
-
-
-
-
-let playerPokemon = [];
-
 
 const model = {
     currentPlayer: '',
