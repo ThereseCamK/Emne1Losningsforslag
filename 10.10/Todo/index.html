@@ -201,13 +201,14 @@
 
         }
         function updateTask(index) {
-            const id = `editOn${index}`;
-            const inputTag = document.getElementById(id);
+                const id = `editOn${index}`;
+                const inputTag = document.getElementById(id);
 
-            tasks[index].descripton = inputTag.value;
-            tasks[index].editMode = false;
+                tasks[index].descripton = inputTag.value;
+                tasks[index].editMode = false;
             show();
         }
+
         function updateResponsible(index){
             const id = `editResp${index}`;
             const inputTag = document.getElementById(id);
